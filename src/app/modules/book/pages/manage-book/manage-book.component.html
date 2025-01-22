@@ -1,0 +1,104 @@
+<div class="manage-book-container">
+  <h2>Manage Book</h2>
+  
+  <hr />
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="errorMsg.length">
+    <p *ngFor="let msg of errorMsg">{{ msg }}</p>
+  </div>
+
+  
+
+  <div class="content">
+    <div class="image-container">
+      <!-- Book Cover Preview -->
+      <img
+        [src]="selectedPicture || 'https://en.kobunsha.com/wp-content/themes/kobunsha/img/noimage.png'"
+        alt="Book cover"
+      />
+
+      <div class="file-input-container">
+        <!-- Choose Image Button (Visible when no image is selected) -->
+        <label *ngIf="!selectedBookCover" for="formFile">Choose Image</label>
+
+        <!-- Input for file selection -->
+        <input
+          (change)="onFileSelected($event)"
+          type="file"
+          id="formFile"
+          accept="image/*"
+        />
+
+        <!-- Display selected file name -->
+        <div *ngIf="selectedBookCover">
+          <p class="selected-file">{{ selectedBookCover.name }}</p>
+          <!-- Cancel selection button -->
+          <button (click)="cancelSelection()">Cancel Selection</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <form (ngSubmit)="saveBook()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            [(ngModel)]="bookRequest.title"
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Book title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="author">Author Name</label>
+          <input
+            [(ngModel)]="bookRequest.authorName"
+            type="text"
+            id="author"
+            name="authorName"
+            placeholder="Author Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="isbn">ISBN</label>
+          <input
+            [(ngModel)]="bookRequest.isbn"
+            type="text"
+            id="isbn"
+            name="isbn"
+            placeholder="ISBN"
+          />
+        </div>
+        <div class="form-group">
+          <label for="synopsis">Synopsis</label>
+          <textarea
+            [(ngModel)]="bookRequest.synopsis"
+            rows="4"
+            id="synopsis"
+            name="synopsis"
+            placeholder="Book Synopsis"
+          ></textarea>
+        </div>
+        <div class="form-check">
+          <input
+            [(ngModel)]="bookRequest.shareable"
+            type="checkbox"
+            id="shareable"
+            name="shareable"
+          />
+          <label for="shareable">Shareable</label>
+        </div>
+        <div class="actions">
+          <button type="submit" class="save-btn">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <a routerLink="/books/my-books" class="cancel-link">
+            <i class="fas fa-times"></i> Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

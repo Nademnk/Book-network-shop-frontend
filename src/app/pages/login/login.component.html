@@ -1,0 +1,36 @@
+<div class="login-container">
+  <!-- Title -->
+  <h3 class="animated fadeIn">Login</h3>
+  <hr class="animated fadeIn" />
+
+  <!-- Error Message -->
+  <div *ngIf="errorMsg?.length" class="alert animated shake" role="alert" aria-live="assertive">
+    <p *ngFor="let msg of errorMsg" class="animated fadeInUp">{{ msg }}</p>
+  </div>
+
+  <!-- Email Field -->
+  <div class="form-group animated fadeInLeft">
+    <label for="login">Email address</label>
+    <input [(ngModel)]="authRequest.email" type="email" id="login" name="email" placeholder="name@example.com" aria-required="true" required />
+  </div>
+
+  <!-- Password Field -->
+  <div class="form-group animated fadeInRight">
+    <label for="password">Password</label>
+    <input [(ngModel)]="authRequest.password" type="password" id="password" name="password" placeholder="Password" aria-required="true" required />
+  </div>
+
+  <!-- Form Actions -->
+  <div class="form-actions animated fadeInUp">
+    <!-- Submit Button -->
+    <button (click)="login()" type="submit" class="btn-primary" [disabled]="!authRequest.email || !authRequest.password">
+      <em class="fas fa-sign-in-alt"></em>&nbsp;Sign in
+    </button>
+
+    <!-- Register Link -->
+    <div class="register-link animated fadeIn">
+      Don't have an account?&nbsp;
+      <button (click)="register()" type="button" class="register-btn">Register</button>
+    </div>
+  </div>
+</div>

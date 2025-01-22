@@ -1,0 +1,333 @@
+// Variables for consistency
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+$text-color: #343a40;
+$warning-color: #ffc107;
+$success-color: #28a745;
+$error-color: #dc3545;
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: $background-color;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+
+    h2 {
+        text-align: center;
+        color: $text-color;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+    }
+
+    .book-details {
+        margin-bottom: 20px;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid $secondary-color;
+            border-radius: 5px;
+            background-color: #ffffff;
+
+            .label {
+                font-weight: bold;
+                color: $secondary-color;
+                flex: 1;
+            }
+
+            .value {
+                color: $text-color;
+                flex: 2;
+                text-align: right;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .feedback-toggle {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: $primary-color;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+
+            &.active {
+                transform: rotate(180deg);
+                color: $success-color;
+            }
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+
+
+    .feedback-section {
+        margin: 20px;
+        padding: 15px;
+        border: 1px solid $secondary-color;
+        border-radius: 10px;
+        background-color: $background-color;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+
+        &.hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            .rating-input {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                input[type='range'] {
+                    flex: 1;
+                    appearance: none;
+                    width: 100%;
+                    height: 5px;
+                    background: $secondary-color;
+                    border-radius: 5px;
+                    outline: none;
+
+                    &::-webkit-slider-thumb {
+                        appearance: none;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background: $primary-color;
+                        cursor: pointer;
+                    }
+                }
+
+                span {
+                    font-weight: bold;
+                    color: $primary-color;
+                }
+            }
+
+            textarea {
+                width: 100%;
+                height: 100px;
+                padding: 10px;
+                border: 1px solid $secondary-color;
+                border-radius: 5px;
+                resize: none;
+                font-size: 1rem;
+                font-family: inherit;
+            }
+
+            button {
+                align-self: flex-end;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: $primary-color;
+                color: #ffffff;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: $success-color;
+                }
+            }
+
+        }
+    }
+}
+
+.book-list {
+    margin-top: 20px;
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid $secondary-color;
+        }
+
+        th {
+            background-color: $primary-color;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        td {
+            color: $text-color;
+
+            .action-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+
+                i {
+                    cursor: pointer;
+                    font-size: 1.2rem;
+
+                    &.text-success {
+                        color: $success-color;
+                    }
+
+                    &.text-primary {
+                        color: $primary-color;
+                    }
+
+                    &.text-warning {
+                        color: $warning-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+
+            .page-link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px 12px;
+                background-color: $background-color;
+                border: 1px solid $secondary-color;
+                border-radius: 5px;
+                text-decoration: none;
+                color: $text-color;
+                cursor: pointer;
+
+                &.disabled {
+                    pointer-events: none;
+                    opacity: 0.6;
+                }
+
+                &.active {
+                    background-color: $primary-color;
+                    color: #ffffff;
+                }
+
+                &:hover {
+                    background-color: $secondary-color;
+                    color: #ffffff;
+                }
+
+                i {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .book-details .row {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .value {
+            text-align: left;
+        }
+    }
+
+    .feedback-section form {
+        .rating-input {
+            flex-direction: column;
+            width: 100%;
+
+            input[type='range'] {
+                width: 100%;
+            }
+        }
+    }
+
+    .table {
+
+        th,
+        td {
+            font-size: 0.9rem;
+            padding: 8px;
+        }
+    }
+
+    .pagination-container .pagination {
+        flex-wrap: wrap;
+
+        .page-link {
+            padding: 5px 8px;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    .book-details .row {
+        .label {
+            font-size: 0.9rem;
+        }
+
+        .value {
+            font-size: 0.9rem;
+        }
+    }
+
+    .table {
+
+        th,
+        td {
+            font-size: 0.8rem;
+            padding: 6px;
+        }
+    }
+
+    .pagination-container .pagination {
+        .page-link {
+            padding: 4px 6px;
+            font-size: 0.8rem;
+        }
+    }
+}

@@ -1,0 +1,71 @@
+<h2>Return Book</h2>
+<hr>
+<div *ngIf="message" 
+class="alert" 
+[class.alert-danger]="level === 'error'" 
+[class.alert-success]="level === 'success'">
+    {{ message }}
+
+
+</div>
+<div class="book-list" >
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Rate</th>
+          <th><i class="fas fa-cogs"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of returnedBooks.content; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.authorName }}</td>
+          <td>{{ book.isbn }}</td>
+          <td><i class="fas fa-star text-warning"></i>{{ book.rate }}</td>
+          <td>
+            <div class="action-buttons">
+              <i *ngIf="book.returned" class="icon-plane text-primary"></i>
+              <i *ngIf="!book.returned"  class="icon-plane text-success"></i>
+              <i class="icon-check-circle"  (click)="approveBookReturn(book)" [class.text-success]="book.returnApproved"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination-container">
+      <nav>
+        <ul class="pagination">
+          <li>
+            <a (click)="goToFirstPage()" class="page-link" [class.disabled]="page == 0" aria-label="First">
+              <i class="fa-solid fa-angles-left"></i>
+            </a>
+          </li>
+          <li>
+            <a (click)="goToPreviousPage()" class="page-link" [class.disabled]="page == 0" aria-label="Previous">
+              <i class="fa-solid fa-angle-left"></i>
+            </a>
+          </li>
+          <li *ngFor="let _ of [].constructor(returnedBooks.totalPages); let pageIndex = index">
+            <a (click)="goToPage(pageIndex)" class="page-link" [class.active]="page == pageIndex">
+              {{ pageIndex + 1 }}
+            </a>
+          </li>
+          <li>
+            <a (click)="goToNextPage()" class="page-link" [class.disabled]="isLastPage" aria-label="Next">
+              <i class="fa-solid fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a (click)="goToLastPage()" class="page-link" [class.disabled]="isLastPage" aria-label="Last">
+              <i class="fa-solid fa-angles-right"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
