@@ -14,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    
     
   ],
   imports: [
@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
    LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
+    AppComponent,
      // Required animations module
    ToastrModule.forRoot({
      timeOut: 3000,
@@ -46,9 +47,11 @@ import { ToastrModule } from 'ngx-toastr';
     },
     
   ],
-  bootstrap: [AppComponent]
+  
 })
-export class AppModule { }
+export class AppModule {
+  static default: any;
+}
 
 
 
