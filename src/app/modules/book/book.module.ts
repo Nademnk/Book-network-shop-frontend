@@ -16,6 +16,12 @@ import { ReturnBookComponent } from './pages/return-book/return-book.component';
 
 @NgModule({
   declarations: [
+   
+  ],
+  imports: [
+    CommonModule,
+    BookRoutingModule,
+    FormsModule,
     MainComponent,
     MenuComponent,
     BookListComponent,
@@ -25,11 +31,6 @@ import { ReturnBookComponent } from './pages/return-book/return-book.component';
     ManageBookComponent,
     BorrowedBookListComponent,
     ReturnBookComponent
-  ],
-  imports: [
-    CommonModule,
-    BookRoutingModule,
-    FormsModule
   ]
 })
 export class BookModule { }
