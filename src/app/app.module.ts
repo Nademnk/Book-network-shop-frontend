@@ -15,9 +15,6 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    ActivateAccountComponent,
     
   ],
   imports: [
@@ -25,7 +22,11 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
    FormsModule,
    CodeInputModule,
-   BrowserAnimationsModule, // Required animations module
+   BrowserAnimationsModule,
+   LoginComponent,
+    RegisterComponent,
+    ActivateAccountComponent,
+     // Required animations module
    ToastrModule.forRoot({
      timeOut: 3000,
      positionClass: 'toast-top-right',
