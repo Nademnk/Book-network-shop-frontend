@@ -11,6 +11,7 @@ import {CodeInputModule} from 'angular-code-input';
 import { tokenInterceptorInterceptor } from './services/interceptor/token-interceptor.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
    FormsModule,
    CodeInputModule,
    BrowserAnimationsModule,
